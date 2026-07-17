@@ -745,16 +745,14 @@ function App() {
               <small>STANDBY</small>
             </button>
           </div>
-          {settings.showHardware && activePreset !== 'modern' && (
-            <div className="tv-hardware">
-              <div className="tv-brand">RETROCAST</div>
-              <div className="tv-grille">{Array.from({ length: 90 }, (_, index) => <i key={index} />)}</div>
-              <div className="tv-knobs">
-                <span className="tv-knob" />
-                <span className="tv-knob" />
-                <span className="hardware-led" />
-              </div>
-            </div>
+          {settings.showHardware && (
+            <img
+              className="cabinet-frame"
+              src={`/frames/${activePreset}.webp`}
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+            />
           )}
         </div>
       </section>

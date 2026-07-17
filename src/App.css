@@ -238,75 +238,44 @@ input, select {
   border-radius: calc(8px + var(--curve) * 34px) / calc(7px + var(--curve) * 22px);
   box-shadow: inset 0 0 18px rgba(0,0,0,.92), 0 0 0 3px #090a08;
 }
-/* Cabinet mode: a real-feeling moulded set built around the live screen. */
-.display-cabinet .watch-stage { padding: 52px 28px 64px; }
+/* Cabinet mode: a generated photoreal frame sits over the live video aperture. */
+.display-cabinet .watch-stage { padding: 46px 24px 78px; }
 .display-cabinet .television {
-  width: min(1200px, 88vw);
+  width: min(1200px, 92vw, calc((100dvh - 124px) * 1.5));
   height: auto;
-  max-height: calc(100dvh - 116px);
-  filter: drop-shadow(0 34px 60px rgba(0,0,0,.6));
+  aspect-ratio: 3 / 2;
+  filter: drop-shadow(0 30px 42px rgba(0,0,0,.62));
 }
-.display-cabinet .screen-shell { height: auto; aspect-ratio: 16 / 9; }
-
-/* Walnut wood console for the tube sets — grain, top gloss and edge shading. */
-.display-cabinet .television-crt,
-.display-cabinet .television-mono,
-.display-cabinet .television-vhs {
-  width: min(1140px, 86vw);
-  padding: 30px 36px 0;
-  border-radius: 26px 26px 15px 15px;
-  background:
-    repeating-linear-gradient(91deg, rgba(0,0,0,.05) 0 1px, transparent 1px 5px),
-    linear-gradient(180deg, rgba(255,255,255,.14), transparent 8%),
-    linear-gradient(92deg, rgba(255,255,255,.07), transparent 6%, transparent 94%, rgba(0,0,0,.32)),
-    linear-gradient(178deg, #7c5535, #593a24 55%, #3d271a);
-  box-shadow:
-    inset 0 2px rgba(255,255,255,.24),
-    inset 0 -18px 34px rgba(0,0,0,.4),
-    inset 18px 0 28px rgba(0,0,0,.16),
-    inset -18px 0 28px rgba(0,0,0,.16);
-}
-
-/* The glass sits recessed in a chunky black bezel. */
-.display-cabinet .television-crt .screen-shell,
-.display-cabinet .television-mono .screen-shell,
-.display-cabinet .television-vhs .screen-shell,
-.display-cabinet .television-portable .screen-shell {
-  border-radius: 22px / 16px;
-  box-shadow:
-    0 0 0 14px #0c0d0a,
-    0 0 0 15px rgba(255,255,255,.05),
-    0 8px 16px rgba(0,0,0,.5),
-    inset 0 0 48px rgba(0,0,0,.88);
-}
-
-/* Cream-plastic portable set. */
 .display-cabinet .television-portable {
-  width: min(760px, 72vw);
-  padding: 26px 30px 0;
-  border-radius: 22px 22px 26px 26px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.24), transparent 9%),
-    linear-gradient(92deg, rgba(255,255,255,.14), transparent 7%, transparent 93%, rgba(0,0,0,.22)),
-    linear-gradient(176deg, #ccc1a4, #9c9179 60%, #79705d);
-  box-shadow: inset 0 2px rgba(255,255,255,.5), inset 0 -14px 26px rgba(0,0,0,.22);
+  width: min(1080px, 90vw, calc((100dvh - 184px) * 1.5));
 }
-.display-cabinet .television-portable .screen-shell { aspect-ratio: 4 / 3; }
-
-/* Slim graphite frame for the flat LCD. */
-.display-cabinet .television-lcd {
-  width: min(1180px, 88vw);
-  padding: 14px 14px 32px;
-  border-radius: 14px 14px 9px 9px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.16), transparent 12%),
-    linear-gradient(176deg, #2c2f34, #15171b);
-  box-shadow: inset 0 1px rgba(255,255,255,.2), 0 26px 54px rgba(0,0,0,.5);
+.display-cabinet .screen-shell {
+  position: absolute;
+  z-index: 1;
+  left: var(--screen-left);
+  top: var(--screen-top);
+  width: var(--screen-width);
+  height: var(--screen-height);
+  border-radius: var(--screen-radius, 0);
+  box-shadow: inset 0 0 26px rgba(0,0,0,.82);
 }
-.display-cabinet .television-lcd .screen-shell {
-  border-radius: 4px;
-  box-shadow: 0 0 0 4px #0a0b0d, 0 0 0 5px rgba(255,255,255,.04), inset 0 0 30px rgba(0,0,0,.6);
+.cabinet-frame {
+  position: absolute;
+  z-index: 9;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
 }
+.television-modern { --screen-left: 9.77%; --screen-top: 11.23%; --screen-width: 80.27%; --screen-height: 70.02%; --screen-radius: 1.2%; }
+.television-crt { --screen-left: 17.25%; --screen-top: 16.31%; --screen-width: 51.56%; --screen-height: 61.82%; --screen-radius: 11% / 13%; }
+.television-mono { --screen-left: 16.99%; --screen-top: 15.43%; --screen-width: 51.69%; --screen-height: 61.04%; --screen-radius: 10% / 12%; }
+.television-vhs { --screen-left: 23.96%; --screen-top: 13.67%; --screen-width: 52.02%; --screen-height: 55.37%; --screen-radius: 9% / 11%; }
+.television-lcd { --screen-left: 14.26%; --screen-top: 12.01%; --screen-width: 71.22%; --screen-height: 60.25%; --screen-radius: 1%; }
+.television-portable { --screen-left: 20.05%; --screen-top: 10.16%; --screen-width: 55.47%; --screen-height: 67.19%; --screen-radius: 10% / 12%; }
+.television-custom { --screen-left: 15.89%; --screen-top: 18.55%; --screen-width: 68.10%; --screen-height: 63.18%; --screen-radius: 1.5%; }
 
 /* Chroma-key backdrop: fill everything behind the set with greenscreen so it can be
    keyed into a real scene / photo mockup. */
@@ -390,47 +359,6 @@ input, select {
 }
 .television-custom .phosphor-mask { opacity: calc(var(--bleed) * .42 * var(--effect-intensity)); }
 .television-custom .scanline-layer { opacity: calc(.72 * var(--effect-intensity)); }
-
-.tv-hardware {
-  height: 82px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  padding: 0 22px;
-}
-.tv-brand {
-  flex: 0 0 auto;
-  font: 13px/1 var(--mono);
-  letter-spacing: .32em;
-  color: rgba(255,255,255,.7);
-  text-shadow: 0 1px 1px rgba(0,0,0,.6), 0 -1px rgba(255,255,255,.18);
-}
-/* Recessed speaker grille — a dense dot mesh punched into the cabinet. */
-.tv-grille {
-  flex: 1;
-  min-width: 0;
-  height: 44px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 6px);
-  grid-auto-rows: 6px;
-  gap: 4px;
-  overflow: hidden;
-  padding: 3px;
-  border-radius: 5px;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,.5);
-}
-.tv-grille i { width: 4px; height: 4px; border-radius: 50%; background: rgba(0,0,0,.5); box-shadow: 0 1px rgba(255,255,255,.1); }
-.tv-knobs { flex: 0 0 auto; display: flex; align-items: center; gap: 16px; }
-.tv-knob {
-  position: relative;
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 30%, #757570, #2b2b27 72%);
-  box-shadow: inset 0 1px rgba(255,255,255,.4), inset 0 -3px 5px rgba(0,0,0,.6), 0 2px 4px rgba(0,0,0,.45);
-}
-.tv-knob::after { content: ""; position: absolute; left: 50%; top: 4px; width: 2px; height: 9px; border-radius: 1px; background: rgba(255,255,255,.6); transform: translateX(-50%); }
-.hardware-led { width: 7px; height: 7px; border-radius: 50%; background: #ff5636; box-shadow: 0 0 9px rgba(255,86,54,.85); }
 
 /* ---- On-screen display: bare phosphor lettering with a hard black edge, drawn
    straight on the picture — no panels, no blur, exactly like the hardware did. ---- */
@@ -891,16 +819,23 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .preset-grid > button.active { border-color: var(--accent); background: var(--accent-soft); }
 .preset-grid strong { align-self: end; font-size: 13px; font-weight: 600; }
 .preset-grid small { align-self: start; min-width: 0; color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.preset-preview { grid-row: 1 / 3; width: 54px; height: 38px; display: grid; place-items: center; border-radius: 6px; background: #292b28; box-shadow: inset 0 0 0 2px #111; }
-.preset-preview i { width: 42px; height: 25px; background: linear-gradient(135deg, #474f52, #161b1d); }
-.preview-crt, .preview-mono, .preview-vhs, .preview-portable { border-radius: 8px; background: #4b4b42; }
-.preview-crt i, .preview-mono i, .preview-vhs i, .preview-portable i { width: 38px; height: 26px; border-radius: 7px / 4px; background: repeating-linear-gradient(0deg,#293033 0 1px,#111 1px 2px); }
-.preview-mono i { filter: grayscale(1); background: repeating-linear-gradient(0deg,#c7c7be 0 1px,#282a28 1px 3px); }
-.preview-vhs i { background: repeating-linear-gradient(0deg,#3f3b49 0 2px,#111 2px 3px); }
-.preview-lcd { background: #272927; }
-.preview-lcd i { background: linear-gradient(135deg, #7b8176, #242923); }
-.preview-portable { background: #787260; }
-.preview-custom i { background: linear-gradient(135deg, #4d4555, #1c241d); }
+.preset-preview { grid-row: 1 / 3; width: 54px; height: 38px; border-radius: 5px; background-color: #050719; background-image: var(--frame-preview); background-position: center; background-repeat: no-repeat; background-size: contain; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.preset-preview i { display: none; }
+.preview-modern { --frame-preview: url('/frames/modern.webp'); }
+.preview-crt { --frame-preview: url('/frames/crt.webp'); }
+.preview-mono { --frame-preview: url('/frames/mono.webp'); }
+.preview-vhs { --frame-preview: url('/frames/vhs.webp'); }
+.preview-lcd { --frame-preview: url('/frames/lcd.webp'); }
+.preview-portable { --frame-preview: url('/frames/portable.webp'); }
+.preview-custom { --frame-preview: url('/frames/custom.webp'); }
+.manage-row .preset-swatch[class*="preview-"]:not(.preview-global) {
+  background-color: #050719;
+  background-image: var(--frame-preview);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.manage-row .preset-swatch[class*="preview-"]:not(.preview-global) i { display: none; }
 
 .display-mode-toggle {
   display: grid;
@@ -989,8 +924,9 @@ kbd { min-width: 26px; display: inline-grid; place-items: center; height: 24px; 
 @keyframes preset-menu-in { from { opacity: 0; transform: translateY(-4px); } }
 
 @media (max-width: 900px) {
-  .display-cabinet .watch-stage { padding: 58px 18px 86px; }
-  .display-cabinet .television, .display-cabinet .television-crt, .display-cabinet .television-mono, .display-cabinet .television-vhs, .display-cabinet .television-lcd, .display-cabinet .television-portable { width: 94vw; }
+  .display-cabinet .watch-stage { padding: 58px 12px 86px; }
+  .display-cabinet .television { width: min(96vw, calc((100dvh - 132px) * 1.5)); }
+  .display-cabinet .television-portable { width: min(92vw, calc((100dvh - 190px) * 1.5)); }
   /* Keep play/pause on screen (channel stepping moves to the channel list). */
   .transport-center > button:not(.play-key) { display: none; }
   .transport-right .preset-pill, .transport-right input[type="range"] { display: none; }
@@ -1002,10 +938,9 @@ kbd { min-width: 26px; display: inline-grid; place-items: center; height: 24px; 
 }
 
 @media (max-width: 620px) {
-  .display-cabinet .watch-stage { padding: 54px 6px 76px; }
-  .display-cabinet .television-crt, .display-cabinet .television-mono, .display-cabinet .television-vhs, .display-cabinet .television-portable { padding: 14px 14px 0; border-radius: 24px 24px 12px 12px; }
-  .tv-hardware { height: 56px; gap: 14px; padding: 0 14px; }
-  .tv-grille { height: 32px; }
+  .display-cabinet .watch-stage { padding: 54px 4px 76px; }
+  .display-cabinet .television { width: min(98vw, calc((100dvh - 126px) * 1.5)); }
+  .display-cabinet .television-portable { width: min(94vw, calc((100dvh - 184px) * 1.5)); }
   .transport { bottom: calc(12px + env(safe-area-inset-bottom)); width: calc(100vw - 16px); height: 64px; gap: 2px; }
   .transport-channel { padding-left: 10px; }
   /* Thumb-sized controls. */
