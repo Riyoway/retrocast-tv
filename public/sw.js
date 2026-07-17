@@ -1,4 +1,4 @@
-const CACHE = 'retrocast-shell-v3'
+const CACHE = 'retrocast-shell-v4'
 const SHELL = [
   './',
   './index.html',

@@ -274,7 +274,7 @@ input, select {
 .television-mono { --screen-left: 16.99%; --screen-top: 15.43%; --screen-width: 51.69%; --screen-height: 61.04%; --screen-radius: 10% / 12%; }
 .television-vhs { --screen-left: 23.96%; --screen-top: 13.67%; --screen-width: 52.02%; --screen-height: 55.37%; --screen-radius: 9% / 11%; }
 .television-lcd { --screen-left: 14.26%; --screen-top: 12.01%; --screen-width: 71.22%; --screen-height: 60.25%; --screen-radius: 1%; }
-.television-portable { --screen-left: 20.05%; --screen-top: 10.16%; --screen-width: 55.47%; --screen-height: 67.19%; --screen-radius: 10% / 12%; }
+.television-portable { --screen-left: 20.05%; --screen-top: 26.17%; --screen-width: 46.03%; --screen-height: 51.17%; --screen-radius: 10% / 12%; }
 .television-custom { --screen-left: 15.89%; --screen-top: 18.55%; --screen-width: 68.10%; --screen-height: 63.18%; --screen-radius: 1.5%; }
 
 /* Chroma-key backdrop: fill everything behind the set with greenscreen so it can be
