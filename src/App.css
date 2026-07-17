@@ -810,8 +810,8 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .manage-row strong, .manage-row small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .manage-row strong { font-size: 13px; font-weight: 600; }
 .manage-row small { color: var(--muted); font-size: 11px; }
-.preset-select { position: relative; width: 108px; min-width: 108px; display: block; }
-.preset-select-trigger {
+.manage-row .preset-select { position: relative; width: 108px; min-width: 108px; display: block; }
+.manage-row .preset-select-trigger {
   width: 108px;
   height: 36px;
   display: flex;
@@ -826,16 +826,16 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
   box-shadow: inset 0 1px rgba(255,255,255,.12), 0 2px 8px rgba(0,0,0,.18);
   font: 500 12px/1 var(--mono);
 }
-.preset-select-trigger:hover,
-.preset-select-trigger[aria-expanded="true"] {
+.manage-row .preset-select-trigger:hover,
+.manage-row .preset-select-trigger[aria-expanded="true"] {
   color: var(--text);
   border-color: rgba(255,255,255,.42);
   background: linear-gradient(180deg, #121b7d, #080e51);
 }
-.preset-select-trigger span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.preset-select-trigger svg { flex: 0 0 auto; color: var(--accent); transition: transform .16s ease; }
-.preset-select-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
-.preset-select-menu {
+.manage-row .preset-select-trigger span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.manage-row .preset-select-trigger svg { flex: 0 0 auto; color: var(--accent); transition: transform .16s ease; }
+.manage-row .preset-select-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.manage-row .preset-select-menu {
   position: absolute;
   z-index: 35;
   top: calc(100% + 6px);
@@ -850,7 +850,7 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
   box-shadow: 0 16px 34px rgba(0,0,0,.46), inset 0 1px rgba(255,255,255,.08);
   animation: preset-menu-in .12s ease-out;
 }
-.preset-select-menu button {
+.manage-row .preset-select-menu button {
   width: 100%;
   height: 34px;
   display: flex;
@@ -862,9 +862,9 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
   text-align: left;
   font-size: 12px;
 }
-.preset-select-menu button:hover { color: var(--text); background: rgba(255,255,255,.07); }
-.preset-select-menu button.active { color: #17170f; background: var(--accent); }
-.preset-swatch {
+.manage-row .preset-select-menu button:hover { color: var(--text); background: rgba(255,255,255,.07); }
+.manage-row .preset-select-menu button.active { color: #17170f; background: var(--accent); }
+.manage-row .preset-swatch {
   flex: 0 0 auto;
   width: 24px;
   height: 17px;
@@ -874,9 +874,9 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
   background: #252923;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.58);
 }
-.preset-swatch i { width: 18px; height: 11px; border-radius: 2px; background: linear-gradient(135deg, #697376, #161b1d); }
-.preset-select-menu button.active .preset-swatch { box-shadow: inset 0 0 0 1px rgba(0,0,0,.4); }
-.preview-global i { background: linear-gradient(135deg, var(--accent), #2ee65a); }
+.manage-row .preset-swatch i { width: 18px; height: 11px; border-radius: 2px; background: linear-gradient(135deg, #697376, #161b1d); }
+.manage-row .preset-select-menu button.active .preset-swatch { box-shadow: inset 0 0 0 1px rgba(0,0,0,.4); }
+.manage-row .preview-global i { background: linear-gradient(135deg, var(--accent), #2ee65a); }
 .manage-row button { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 8px; color: var(--muted); }
 .manage-row button:hover { color: var(--text); background: rgba(255,255,255,.06); }
 .manage-row .favorite.active { color: var(--accent); }
@@ -1025,9 +1025,9 @@ kbd { min-width: 26px; display: inline-grid; place-items: center; height: 24px; 
   .settings-content { padding-left: 16px; padding-right: 16px; }
   .settings-tabs button { padding: 0 12px; }
   .manage-row { grid-template-columns: 46px minmax(110px,1fr) 40px 40px; }
-  .preset-select { grid-column: 2 / -1; width: 100%; min-width: 0; }
-  .preset-select-trigger { width: 100%; }
-  .preset-select-menu { left: 0; right: auto; width: min(210px, 100%); }
+  .manage-row .preset-select { grid-column: 2 / -1; width: 100%; min-width: 0; }
+  .manage-row .preset-select-trigger { width: 100%; }
+  .manage-row .preset-select-menu { left: 0; right: auto; width: min(210px, 100%); }
   .manage-row button { width: 40px; height: 40px; }
   .preset-grid { grid-template-columns: 1fr; }
   .macro-editor { grid-template-columns: 32px 80px 1fr; }
