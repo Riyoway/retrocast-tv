@@ -1,0 +1,13 @@
+{
+  "name": "Retrocast TV",
+  "short_name": "Retrocast",
+  "description": "A local-first IPTV player with faithful television display presets.",
+  "start_url": ".",
+  "display": "fullscreen",
+  "background_color": "#02041a",
+  "theme_color": "#02041a",
+  "orientation": "any",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

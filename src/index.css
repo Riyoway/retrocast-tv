@@ -1,0 +1,24 @@
+:root {
+  /* Bitmap-era faces: DotGothic16 for all chrome (covers Japanese), VT323 for the
+     big latin OSD numerals. Both fall back to plain monospace offline. */
+  font-family: "DotGothic16", Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #f2f4ff;
+  background: #02041a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --mono: "DotGothic16", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --osd: "VT323", "DotGothic16", monospace;
+}
+
+* { box-sizing: border-box; scrollbar-width: none; -webkit-user-select: none; user-select: none; }
+*::-webkit-scrollbar { display: none; }
+/* Text stays unselectable app-wide (it's a TV), except where you actually type. */
+input, textarea { -webkit-user-select: text; user-select: text; }
+html, body, #root { width: 100%; min-width: 320px; height: 100%; margin: 0; overflow: hidden; }
+button, input, select { font: inherit; }
+button { color: inherit; }
+button, input, select { outline: none; }
+/* Mobile touch: no blue tap flash, no 300ms delay / double-tap zoom on controls. */
+button, input, select, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button:focus-visible, input:focus-visible, select:focus-visible { box-shadow: 0 0 0 2px #ffd23d; }
+::selection { background: #ffd23d; color: #101; }
