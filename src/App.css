@@ -579,91 +579,86 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .guide-empty { display: grid; place-items: center; min-width: 260px; color: var(--faint); font-size: 13px; }
 
 /* ---- Virtual remote ---- */
-/* Floating, draggable remote overlay (no scrim — you keep watching while using it).
-   Sized and detailed like the real thing: a narrow slab of matte plastic, dense
-   rubber keys, an IR window at the top, and a visible press on every key. */
+/* Floating, draggable remote overlay: a generated photoreal body with live
+   button hit targets layered over the physical keys. */
 .remote-overlay {
   position: absolute;
   z-index: 40;
-  width: 204px;
+  width: 218px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
   opacity: 0;
   visibility: hidden;
   transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  scrollbar-width: none;
 }
-.remote-overlay:not(.remote-moved) { top: 50%; right: 24px; transform: translateY(-50%) scale(.96); }
-.remote-overlay:not(.remote-moved).remote-open { transform: translateY(-50%) scale(1); }
+.remote-overlay::-webkit-scrollbar { display: none; }
+.remote-overlay:not(.remote-moved) { top: 20px; right: 24px; transform: scale(.96); }
+.remote-overlay:not(.remote-moved).remote-open { transform: scale(1); }
 .remote-overlay.remote-moved { transform: scale(.97); }
 .remote-overlay.remote-moved.remote-open { transform: scale(1); }
 .remote-overlay.remote-open { opacity: 1; visibility: visible; }
-.remote-close { position: absolute; right: 4px; top: 4px; z-index: 2; width: 28px; height: 28px; display: grid; place-items: center; color: #83858c; }
+.remote-close { position: sticky; left: calc(100% - 32px); top: 4px; z-index: 4; width: 28px; height: 28px; display: grid; place-items: center; color: #bfc2c9; border-radius: 50%; background: rgba(0,0,0,.32); backdrop-filter: blur(8px); }
 .remote-close:hover { color: #d6d7dd; }
 .remote-body {
   width: 100%;
-  max-height: calc(100dvh - 40px);
-  overflow-y: auto;
-  padding: 14px 14px 16px;
+  aspect-ratio: 350 / 1705;
+  height: auto;
+  position: relative;
+  margin-top: -28px;
+  padding: 0;
   color: #cbccd2;
-  background:
-    radial-gradient(130% 55% at 50% -8%, rgba(255,255,255,.11), transparent 62%),
-    linear-gradient(100deg, rgba(255,255,255,.05), transparent 20%, transparent 80%, rgba(0,0,0,.32)),
-    linear-gradient(180deg, #303138, #232429 46%, #1a1b20);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 20px 20px 24px 24px;
-  box-shadow: inset 0 1px rgba(255,255,255,.16), inset 0 -7px 18px rgba(0,0,0,.3), 0 20px 52px rgba(0,0,0,.6);
-  scrollbar-width: none;
+  background: url('/remote/remote.webp') center / 100% 100% no-repeat;
+  filter: drop-shadow(0 22px 46px rgba(0,0,0,.62));
 }
-/* IR window: a small glossy black lens set into the top edge. */
-.remote-body::before { content: ""; display: block; height: 8px; margin: -5px 24px 8px; border-radius: 5px; background: radial-gradient(120% 140% at 50% 0%, #26262c, #050506 70%); box-shadow: inset 0 1px 2px rgba(0,0,0,.9), inset 0 -1px rgba(120,60,60,.25), 0 1px rgba(255,255,255,.08); }
-.remote-head { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 6px; cursor: grab; touch-action: none; user-select: none; }
+.remote-head { position: absolute; left: 12%; top: 3.2%; width: 76%; height: 5.7%; cursor: grab; touch-action: none; user-select: none; }
 .remote-head:active { cursor: grabbing; }
-.remote-head > span { font: 9px/1 var(--mono); letter-spacing: .24em; color: #a2a5ad; }
-.remote-head button { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: var(--accent); background: radial-gradient(circle at 40% 32%, #34353c, #1c1d22 74%); box-shadow: inset 0 1px rgba(255,255,255,.2), inset 0 -2px 4px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.35); transition: color .2s; }
+.remote-head > span { position: absolute; left: 34%; top: 8%; color: rgba(230,232,220,.56); font: 7px/1 var(--mono); letter-spacing: .2em; text-shadow: 0 1px 2px #000; }
+.remote-head button { position: absolute; left: 0; top: 18%; width: 20%; height: 64%; display: grid; place-items: center; border-radius: 50%; color: rgba(255,238,190,.96); transition: color .2s; }
 .remote-power { text-shadow: 0 0 9px rgba(232,197,106,.7); }
 .remote-power.off { color: #8a5f5a; text-shadow: none; }
-/* Every rubber key presses in. */
-.remote-body button:active { transform: translateY(1px); box-shadow: inset 0 2px 5px rgba(0,0,0,.55) !important; }
-.remote-meta { height: 46px; display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 8px; margin: 10px 0 12px; padding: 0 12px; border: 1px solid rgba(0,0,0,.6); border-radius: 7px; background: linear-gradient(#05130c, #020806); box-shadow: inset 0 2px 9px rgba(0,0,0,.75), inset 0 0 0 1px rgba(90,255,160,.05); }
-.remote-meta small { color: #4f9e6f; font: 9px/1 var(--osd); letter-spacing: .05em; }
-.remote-meta strong { color: #82ffb4; font: 24px/1 var(--osd); text-shadow: 0 0 9px rgba(130,255,180,.6); }
+.remote-body button { background: transparent; box-shadow: none; border: 0; -webkit-tap-highlight-color: transparent; }
+.remote-body button:hover { outline: 1px solid rgba(232,197,106,.42); outline-offset: -2px; }
+.remote-body button:active { transform: translateY(1px) scale(.98); filter: brightness(1.25); }
+.remote-meta { position: absolute; left: 11%; top: 9.2%; width: 78%; height: 8.3%; display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 6px; padding: 0 9px; overflow: hidden; border-radius: 7px; background: rgba(0,12,7,.28); }
+.remote-meta small { color: #4f9e6f; font: 8px/1 var(--osd); letter-spacing: .05em; }
+.remote-meta strong { color: #82ffb4; font: 20px/1 var(--osd); text-shadow: 0 0 9px rgba(130,255,180,.6); }
 .remote-meta span { min-width: 0; color: #60c68b; font: 11px/1.3 var(--osd); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.remote-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0 6px; }
-.remote-pair > div { display: grid; grid-template-rows: 30px 17px 30px; text-align: center; }
-.remote-pair button { color: #cdced4; font-size: 14px; background: linear-gradient(#373841, #262731); border: 1px solid rgba(255,255,255,.07); box-shadow: inset 0 1px rgba(255,255,255,.17), 0 2px 3px rgba(0,0,0,.3); }
-.remote-pair button:hover { color: #fff; }
-.remote-pair button:first-child { border-radius: 14px 14px 5px 5px; }
-.remote-pair button:last-child { border-radius: 5px 5px 14px 14px; }
-.remote-pair span { align-self: center; color: #82858c; font: 8px/1 var(--mono); letter-spacing: .12em; }
-.remote-wide { width: calc(100% - 12px); height: 24px; margin: 9px 6px 12px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 12px; background: linear-gradient(#373841, #262731); color: #9a9da4; font: 8px/1 var(--mono); letter-spacing: .08em; box-shadow: inset 0 1px rgba(255,255,255,.17), 0 2px 3px rgba(0,0,0,.3); }
+.remote-pair { position: absolute; left: 12%; top: 24.2%; width: 76%; height: 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 45%; }
+.remote-pair > div { position: relative; display: grid; grid-template-rows: 42% 16% 42%; text-align: center; }
+.remote-pair button { color: rgba(236,238,229,.82); font-size: 12px; border-radius: 16px; }
+.remote-pair span { align-self: center; color: rgba(210,211,202,.72); font: 7px/1 var(--mono); letter-spacing: .12em; text-shadow: 0 1px 2px #000; }
+.remote-wide { position: absolute; left: 39.5%; top: 29.6%; width: 21%; height: 4.2%; display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 50%; color: rgba(214,216,205,.82); font: 0/1 var(--mono); letter-spacing: .08em; }
 .remote-wide svg { width: 12px; height: 12px; }
-.remote-wide:hover { color: #d6d7dd; }
-.remote-dpad { position: relative; width: 118px; height: 118px; margin: 0 auto 12px; border-radius: 50%; background: radial-gradient(circle at 50% 38%, #2a2b31, #141518 74%); box-shadow: inset 0 1px rgba(255,255,255,.14), inset 0 -3px 8px rgba(0,0,0,.5), 0 3px 6px rgba(0,0,0,.4); }
-.remote-dpad button { position: absolute; display: grid; place-items: center; width: 39px; height: 39px; color: #b6b9c0; }
+.remote-wide:hover { color: #fff; }
+.remote-dpad { position: absolute; left: 16.5%; top: 38.8%; width: 67%; height: 13.8%; border-radius: 50%; }
+.remote-dpad button { position: absolute; display: grid; place-items: center; width: 33%; height: 33%; color: rgba(235,231,204,.86); border-radius: 50%; }
 .remote-dpad button svg { width: 17px; height: 17px; }
-.remote-dpad button:hover { color: #d6d7dd; }
-.remote-dpad .up { left: 39.5px; top: 2px; }
-.remote-dpad .down { left: 39.5px; bottom: 2px; }
-.remote-dpad .left { left: 2px; top: 39.5px; }
-.remote-dpad .right { right: 2px; top: 39.5px; }
-.remote-dpad .ok { left: 37px; top: 37px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.12); border-radius: 50%; background: radial-gradient(circle at 42% 34%, #45464f, #292a31 76%); color: #eceef4; font: 10px/1 var(--mono); letter-spacing: .08em; box-shadow: inset 0 1px rgba(255,255,255,.28), inset 0 -2px 5px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.5); }
+.remote-dpad button:hover { color: #fff; }
+.remote-dpad .up { left: 33.5%; top: 1%; }
+.remote-dpad .down { left: 33.5%; bottom: 1%; }
+.remote-dpad .left { left: 1%; top: 33.5%; }
+.remote-dpad .right { right: 1%; top: 33.5%; }
+.remote-dpad .ok { left: 34%; top: 34%; width: 32%; height: 32%; color: #eceef4; font: 9px/1 var(--mono); letter-spacing: .08em; }
 .remote-dpad .ok:hover { color: #fff; }
-/* Oval rubber number keys. */
-.number-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 8px; padding: 0 8px; }
-.number-pad button { height: 27px; display: grid; place-items: center; border-radius: 13px; background: linear-gradient(#373841, #262731); color: #d3d5dc; font: 14px/1 var(--mono); border: 1px solid rgba(255,255,255,.07); box-shadow: inset 0 1px rgba(255,255,255,.17), inset 0 -1px 2px rgba(0,0,0,.4), 0 2px 2px rgba(0,0,0,.3); }
+.number-pad { position: absolute; left: 12%; top: 58.65%; width: 76.5%; height: 19.8%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5% 8%; }
+.number-pad button { display: grid; place-items: center; border-radius: 50%; color: rgba(237,239,230,.9); font: 13px/1 var(--mono); text-shadow: 0 1px 2px #000; }
 .number-pad button svg { width: 13px; height: 13px; }
 .number-pad button:hover { color: #fff; }
-.macro-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 12px 4px 10px; }
-.macro-row button { min-width: 0; display: grid; justify-items: center; gap: 5px; color: #a4a7ae; font: 7px/1 var(--mono); letter-spacing: .05em; overflow: hidden; }
-.macro-row button span, .macro-dot { width: 28px; height: 10px; border-radius: 5px; background: #888; box-shadow: inset 0 1.5px rgba(255,255,255,.5), inset 0 -2px 2px rgba(0,0,0,.28), 0 1px 3px rgba(0,0,0,.5); }
-.macro-red span, .macro-dot.macro-red { background: linear-gradient(#f0685e, #d1443b); }
-.macro-green span, .macro-dot.macro-green { background: linear-gradient(#63c76c, #3f9b48); }
-.macro-yellow span, .macro-dot.macro-yellow { background: linear-gradient(#f0c94b, #d1a52f); }
-.macro-blue span, .macro-dot.macro-blue { background: linear-gradient(#5c9df0, #3f79cf); }
-.remote-jog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 8px; margin-bottom: 6px; }
-.remote-jog button { height: 24px; display: flex; align-items: center; justify-content: center; gap: 3px; border-radius: 6px; background: linear-gradient(#373841, #262731); color: #adb0b7; font: 10px/1 var(--mono); border: 1px solid rgba(255,255,255,.06); box-shadow: inset 0 1px rgba(255,255,255,.17), 0 2px 2px rgba(0,0,0,.28); }
+.macro-row { position: absolute; left: 11%; top: 80.6%; width: 78%; height: 4.2%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 7%; }
+.macro-row button { min-width: 0; display: grid; place-items: end center; color: rgba(245,246,238,.92); font: 6px/1 var(--mono); letter-spacing: .02em; overflow: hidden; text-shadow: 0 1px 2px #000; border-radius: 50%; }
+.macro-row button span { display: none; }
+.macro-dot { width: 28px; height: 10px; border-radius: 5px; background: #888; box-shadow: inset 0 1.5px rgba(255,255,255,.5), inset 0 -2px 2px rgba(0,0,0,.28), 0 1px 3px rgba(0,0,0,.5); }
+.macro-dot.macro-red { background: linear-gradient(#f0685e, #d1443b); }
+.macro-dot.macro-green { background: linear-gradient(#63c76c, #3f9b48); }
+.macro-dot.macro-yellow { background: linear-gradient(#f0c94b, #d1a52f); }
+.macro-dot.macro-blue { background: linear-gradient(#5c9df0, #3f79cf); }
+.remote-jog { position: absolute; left: 12.5%; top: 85.2%; width: 75%; height: 3.7%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9%; }
+.remote-jog button { display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; color: rgba(230,232,224,.9); font: 8px/1 var(--mono); text-shadow: 0 1px 2px #000; }
 .remote-jog button:hover { color: #e7e8ee; }
 .remote-jog button.active { color: var(--accent); }
-.remote-transport { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 0 8px; }
-.remote-transport button { height: 24px; display: grid; place-items: center; border-radius: 6px; background: linear-gradient(#373841, #262731); color: #93969d; border: 1px solid rgba(255,255,255,.06); box-shadow: inset 0 1px rgba(255,255,255,.17), 0 2px 2px rgba(0,0,0,.28); }
+.remote-transport { position: absolute; left: 12.5%; top: 90%; width: 75%; height: 3.7%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9%; }
+.remote-transport button { display: grid; place-items: center; border-radius: 8px; color: rgba(230,232,224,.9); }
 .remote-transport button svg { width: 13px; height: 13px; }
 .remote-transport button:hover { color: #d6d7dd; }
 

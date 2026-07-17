@@ -1,4 +1,4 @@
-const CACHE = 'retrocast-shell-v4'
+const CACHE = 'retrocast-shell-v5'
 const SHELL = [
   './',
   './index.html',
@@ -19,6 +19,7 @@ const SHELL = [
   './frames/lcd.webp',
   './frames/portable.webp',
   './frames/custom.webp',
+  './remote/remote.webp',
 ]
 self.addEventListener('install', (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL))))
 self.addEventListener('activate', (event) => event.waitUntil(
