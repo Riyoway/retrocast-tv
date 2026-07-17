@@ -74,7 +74,7 @@ const DEFAULT_SETTINGS: AppSettings = {
   rememberChannel: true,
   autoplay: true,
   showClock: true,
-  showHardware: false,
+  showHardware: true,
   chromaKey: false,
   videoFit: 'cover',
   effectSettings: DEFAULT_EFFECTS,
