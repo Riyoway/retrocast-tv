@@ -205,6 +205,17 @@ input, select {
   background: linear-gradient(118deg, rgba(255,255,255,.1), transparent 20%, transparent 70%, rgba(255,255,255,.025));
   opacity: .35;
 }
+.glass-reflection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(80% 74% at 50% 47%, rgba(255,255,255,.12), transparent 42%),
+    linear-gradient(116deg, transparent 0 20%, rgba(255,255,255,.28) 28%, rgba(255,255,255,.06) 36%, transparent 52%),
+    radial-gradient(95% 105% at 50% 50%, transparent 52%, rgba(255,255,255,.09) 72%, transparent 86%);
+  mix-blend-mode: screen;
+}
 
 .screen-vignette {
   z-index: 8;
@@ -287,6 +298,33 @@ input, select {
 .television-modern .screen-vignette { opacity: .12; }
 .television-modern .analog-overlay { opacity: 0; }
 
+.television-crt .screen-content,
+.television-mono .screen-content,
+.television-vhs .screen-content {
+  filter: url(#tube-lens-strong);
+}
+.television-portable .screen-content,
+.television-custom .screen-content {
+  filter: url(#tube-lens-soft);
+}
+.television-crt .glass-reflection::before,
+.television-mono .glass-reflection::before,
+.television-vhs .glass-reflection::before,
+.television-portable .glass-reflection::before,
+.television-custom .glass-reflection::before {
+  opacity: calc(.78 * var(--effect-intensity));
+}
+.television-crt .screen-vignette,
+.television-mono .screen-vignette,
+.television-vhs .screen-vignette,
+.television-portable .screen-vignette,
+.television-custom .screen-vignette {
+  box-shadow:
+    inset 0 0 22px rgba(255,255,255,.08),
+    inset 0 0 86px rgba(0,0,0,.34),
+    inset 0 0 150px rgba(0,0,0,.62);
+}
+
 .television-crt .video-element,
 .television-crt .youtube-frame {
   filter: url(#crt-fringe) contrast(1.17) saturate(.82) brightness(.93) blur(calc(.28px + var(--bleed) * .62px));
@@ -305,7 +343,12 @@ input, select {
   mix-blend-mode: overlay;
 }
 .television-mono .scanline-layer { opacity: calc(.9 * var(--effect-intensity)); }
-.television-mono .screen-vignette { box-shadow: inset 0 0 155px rgba(0,0,0,.56), inset 0 0 24px rgba(0,0,0,.82); }
+.television-mono .screen-vignette {
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,.08),
+    inset 0 0 155px rgba(0,0,0,.56),
+    inset 0 0 24px rgba(0,0,0,.82);
+}
 
 .television-vhs .video-element,
 .television-vhs .youtube-frame {

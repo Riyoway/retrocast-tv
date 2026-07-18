@@ -204,6 +204,17 @@ function AnalogFilters() {
           <feBlend in="ro" in2="g" mode="screen" result="rg" />
           <feBlend in="rg" in2="bo" mode="screen" />
         </filter>
+
+        {/* Convex tube glass: a compositor displacement that bends the full picture
+            before the reflective glass/vignette layers are drawn over it. */}
+        <filter id="tube-lens-strong" x="-4%" y="-4%" width="108%" height="108%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="2" seed="7" result="warp" />
+          <feDisplacementMap in="SourceGraphic" in2="warp" scale="13" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="tube-lens-soft" x="-3%" y="-3%" width="106%" height="106%" colorInterpolationFilters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.006 0.01" numOctaves="2" seed="11" result="warp" />
+          <feDisplacementMap in="SourceGraphic" in2="warp" scale="7" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
       </defs>
     </svg>
   )
