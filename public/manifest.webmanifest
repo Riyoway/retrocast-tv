@@ -1,7 +1,7 @@
 {
   "name": "Retrocast TV",
   "short_name": "Retrocast",
-  "description": "A local-first IPTV player with faithful television display presets.",
+  "description": "Watch online video through nostalgic CRT, VHS, portable TV, and LCD-style frames.",
   "start_url": ".",
   "display": "fullscreen",
   "background_color": "#02041a",

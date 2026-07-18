@@ -1,4 +1,4 @@
-const CACHE = 'retrocast-shell-v6'
+const CACHE = 'retrocast-shell-v7'
 const PRECACHE = [
   './',
   './index.html',
@@ -12,6 +12,7 @@ const PRECACHE = [
   './icons/icon-512.png',
   './icons/maskable-192.png',
   './icons/maskable-512.png',
+  './og-image.png',
   './frames/modern.webp',
   './frames/crt.webp',
   './frames/mono.webp',
