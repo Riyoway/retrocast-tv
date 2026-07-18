@@ -627,50 +627,50 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .remote-overlay {
   position: absolute;
   z-index: 40;
-  width: 218px;
-  max-height: calc(100dvh - 40px);
-  overflow-y: auto;
+  width: clamp(122px, min(12vw, calc((100dvh - 96px) * 350 / 1705)), 168px);
+  max-height: calc(100dvh - 32px);
+  overflow: visible;
   opacity: 0;
   visibility: hidden;
   transition: opacity .2s ease, transform .2s ease, visibility .2s;
   scrollbar-width: none;
 }
 .remote-overlay::-webkit-scrollbar { display: none; }
-.remote-overlay:not(.remote-moved) { top: 20px; right: 24px; transform: scale(.96); }
+.remote-overlay:not(.remote-moved) { top: 18px; right: 22px; transform: scale(.96); }
 .remote-overlay:not(.remote-moved).remote-open { transform: scale(1); }
 .remote-overlay.remote-moved { transform: scale(.97); }
 .remote-overlay.remote-moved.remote-open { transform: scale(1); }
 .remote-overlay.remote-open { opacity: 1; visibility: visible; }
-.remote-close { position: sticky; left: calc(100% - 32px); top: 4px; z-index: 4; width: 28px; height: 28px; display: grid; place-items: center; color: #bfc2c9; border-radius: 50%; background: rgba(0,0,0,.32); backdrop-filter: blur(8px); }
+.remote-close { position: absolute; right: -8px; top: -8px; z-index: 4; width: 24px; height: 24px; display: grid; place-items: center; color: #bfc2c9; border-radius: 50%; background: rgba(0,0,0,.42); backdrop-filter: blur(8px); }
 .remote-close:hover { color: #d6d7dd; }
 .remote-body {
   width: 100%;
   aspect-ratio: 350 / 1705;
   height: auto;
   position: relative;
-  margin-top: -28px;
+  margin-top: 0;
   padding: 0;
   color: #cbccd2;
   background: url('/remote/remote.webp') center / 100% 100% no-repeat;
-  filter: drop-shadow(0 22px 46px rgba(0,0,0,.62));
+  filter: drop-shadow(0 18px 34px rgba(0,0,0,.58));
 }
 .remote-head { position: absolute; left: 12%; top: 3.2%; width: 76%; height: 5.7%; cursor: grab; touch-action: none; user-select: none; }
 .remote-head:active { cursor: grabbing; }
-.remote-head > span { position: absolute; left: 34%; top: 8%; color: rgba(230,232,220,.56); font: 7px/1 var(--mono); letter-spacing: .2em; text-shadow: 0 1px 2px #000; }
+.remote-head > span { position: absolute; left: 34%; top: 8%; color: rgba(230,232,220,.56); font: 5.5px/1 var(--mono); letter-spacing: .16em; text-shadow: 0 1px 2px #000; }
 .remote-head button { position: absolute; left: 0; top: 18%; width: 20%; height: 64%; display: grid; place-items: center; border-radius: 50%; color: rgba(255,238,190,.96); transition: color .2s; }
 .remote-power { text-shadow: 0 0 9px rgba(232,197,106,.7); }
 .remote-power.off { color: #8a5f5a; text-shadow: none; }
 .remote-body button { background: transparent; box-shadow: none; border: 0; -webkit-tap-highlight-color: transparent; }
 .remote-body button:hover { outline: 1px solid rgba(232,197,106,.42); outline-offset: -2px; }
 .remote-body button:active { transform: translateY(1px) scale(.98); filter: brightness(1.25); }
-.remote-meta { position: absolute; left: 11%; top: 9.2%; width: 78%; height: 8.3%; display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 6px; padding: 0 9px; overflow: hidden; border-radius: 7px; background: rgba(0,12,7,.28); }
-.remote-meta small { color: #4f9e6f; font: 8px/1 var(--osd); letter-spacing: .05em; }
-.remote-meta strong { color: #82ffb4; font: 20px/1 var(--osd); text-shadow: 0 0 9px rgba(130,255,180,.6); }
-.remote-meta span { min-width: 0; color: #60c68b; font: 11px/1.3 var(--osd); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.remote-meta { position: absolute; left: 11%; top: 9.2%; width: 78%; height: 8.3%; display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 4px; padding: 0 6px; overflow: hidden; border-radius: 6px; background: rgba(0,12,7,.28); }
+.remote-meta small { color: #4f9e6f; font: 6px/1 var(--osd); letter-spacing: .05em; }
+.remote-meta strong { color: #82ffb4; font: 15px/1 var(--osd); text-shadow: 0 0 9px rgba(130,255,180,.6); }
+.remote-meta span { min-width: 0; color: #60c68b; font: 7px/1.3 var(--osd); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .remote-pair { position: absolute; left: 12%; top: 24.2%; width: 76%; height: 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 45%; }
 .remote-pair > div { position: relative; display: grid; grid-template-rows: 42% 16% 42%; text-align: center; }
-.remote-pair button { color: rgba(236,238,229,.82); font-size: 12px; border-radius: 16px; }
-.remote-pair span { align-self: center; color: rgba(210,211,202,.72); font: 7px/1 var(--mono); letter-spacing: .12em; text-shadow: 0 1px 2px #000; }
+.remote-pair button { color: rgba(236,238,229,.82); font-size: 8px; border-radius: 16px; }
+.remote-pair span { align-self: center; color: rgba(210,211,202,.72); font: 5px/1 var(--mono); letter-spacing: .08em; text-shadow: 0 1px 2px #000; }
 .remote-wide { position: absolute; left: 39.5%; top: 29.6%; width: 21%; height: 4.2%; display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 50%; color: rgba(214,216,205,.82); font: 0/1 var(--mono); letter-spacing: .08em; }
 .remote-wide svg { width: 12px; height: 12px; }
 .remote-wide:hover { color: #fff; }
@@ -682,14 +682,14 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .remote-dpad .down { left: 33.5%; bottom: 1%; }
 .remote-dpad .left { left: 1%; top: 33.5%; }
 .remote-dpad .right { right: 1%; top: 33.5%; }
-.remote-dpad .ok { left: 34%; top: 34%; width: 32%; height: 32%; color: #eceef4; font: 9px/1 var(--mono); letter-spacing: .08em; }
+.remote-dpad .ok { left: 34%; top: 34%; width: 32%; height: 32%; color: #eceef4; font: 6px/1 var(--mono); letter-spacing: .04em; }
 .remote-dpad .ok:hover { color: #fff; }
 .number-pad { position: absolute; left: 12%; top: 58.65%; width: 76.5%; height: 19.8%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5% 8%; }
-.number-pad button { display: grid; place-items: center; border-radius: 50%; color: rgba(237,239,230,.9); font: 13px/1 var(--mono); text-shadow: 0 1px 2px #000; }
+.number-pad button { display: grid; place-items: center; border-radius: 50%; color: rgba(237,239,230,.9); font: 8px/1 var(--mono); text-shadow: 0 1px 2px #000; }
 .number-pad button svg { width: 13px; height: 13px; }
 .number-pad button:hover { color: #fff; }
 .macro-row { position: absolute; left: 11%; top: 80.6%; width: 78%; height: 4.2%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 7%; }
-.macro-row button { min-width: 0; display: grid; place-items: end center; color: rgba(245,246,238,.92); font: 6px/1 var(--mono); letter-spacing: .02em; overflow: hidden; text-shadow: 0 1px 2px #000; border-radius: 50%; }
+.macro-row button { min-width: 0; display: grid; place-items: end center; color: rgba(245,246,238,.92); font: 4.5px/1 var(--mono); letter-spacing: 0; overflow: hidden; text-shadow: 0 1px 2px #000; border-radius: 50%; }
 .macro-row button span { display: none; }
 .macro-dot { width: 28px; height: 10px; border-radius: 5px; background: #888; box-shadow: inset 0 1.5px rgba(255,255,255,.5), inset 0 -2px 2px rgba(0,0,0,.28), 0 1px 3px rgba(0,0,0,.5); }
 .macro-dot.macro-red { background: linear-gradient(#f0685e, #d1443b); }
@@ -697,7 +697,7 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .macro-dot.macro-yellow { background: linear-gradient(#f0c94b, #d1a52f); }
 .macro-dot.macro-blue { background: linear-gradient(#5c9df0, #3f79cf); }
 .remote-jog { position: absolute; left: 12.5%; top: 85.2%; width: 75%; height: 3.7%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9%; }
-.remote-jog button { display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; color: rgba(230,232,224,.9); font: 8px/1 var(--mono); text-shadow: 0 1px 2px #000; }
+.remote-jog button { display: flex; align-items: center; justify-content: center; gap: 1px; border-radius: 8px; color: rgba(230,232,224,.9); font: 5.5px/1 var(--mono); text-shadow: 0 1px 2px #000; }
 .remote-jog button:hover { color: #e7e8ee; }
 .remote-jog button.active { color: var(--accent); }
 .remote-transport { position: absolute; left: 12.5%; top: 90%; width: 75%; height: 3.7%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 9%; }
@@ -991,10 +991,9 @@ kbd { min-width: 26px; display: inline-grid; place-items: center; height: 24px; 
   .osd-number { min-width: 44px; font-size: 30px; }
   .osd-copy { min-width: 130px; }
   .osd-copy span { max-width: 190px; }
-  /* Roomier, thumb-reachable, centred remote. */
-  .remote-overlay { width: min(248px, calc(100vw - 24px)); }
-  .remote-overlay:not(.remote-moved) { left: 50%; right: auto; transform: translate(-50%, -50%) scale(.96); }
-  .remote-overlay:not(.remote-moved).remote-open { transform: translate(-50%, -50%) scale(1); }
+  .remote-overlay { width: clamp(112px, min(34vw, calc((100dvh - 112px) * 350 / 1705)), 146px); }
+  .remote-overlay:not(.remote-moved) { top: calc(64px + env(safe-area-inset-top)); left: auto; right: 10px; transform: scale(.96); }
+  .remote-overlay:not(.remote-moved).remote-open { transform: scale(1); }
   .settings-content { padding-left: 16px; padding-right: 16px; }
   .settings-tabs button { padding: 0 12px; }
   .manage-row { grid-template-columns: 46px minmax(110px,1fr) 40px 40px; }
