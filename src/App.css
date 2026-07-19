@@ -656,39 +656,42 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 }
 .remote-head { position: absolute; left: 0; top: 0; width: 100%; height: 13%; cursor: grab; touch-action: none; user-select: none; }
 .remote-head:active { cursor: grabbing; }
-.remote-head > span { position: absolute; left: 34%; top: 24%; color: rgba(230,232,220,.56); font: 5.5px/1 var(--mono); letter-spacing: .16em; text-shadow: 0 1px 2px #000; }
+.remote-head > span { display: none; }
 .remote-head button { position: absolute; left: 22%; top: 46%; width: 13%; height: 35%; display: grid; place-items: center; border-radius: 50%; color: rgba(255,238,190,.96); transition: color .2s; transform: translate(-50%, -50%); }
+.remote-head button svg { display: none; }
 .remote-power { text-shadow: 0 0 9px rgba(232,197,106,.7); }
 .remote-power.off { color: #8a5f5a; text-shadow: none; }
 .remote-body button { background: transparent; box-shadow: none; border: 0; -webkit-tap-highlight-color: transparent; }
 .remote-body button:hover { outline: 1px solid rgba(232,197,106,.42); outline-offset: -2px; }
 .remote-body button:active { filter: brightness(1.25); }
-.remote-meta { position: absolute; left: 11%; top: 9.2%; width: 78%; height: 8.3%; display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 4px; padding: 0 6px; overflow: hidden; border-radius: 6px; background: rgba(0,12,7,.28); }
+.remote-meta { display: none; }
 .remote-meta small { color: #4f9e6f; font: 6px/1 var(--osd); letter-spacing: .05em; }
 .remote-meta strong { color: #82ffb4; font: 15px/1 var(--osd); text-shadow: 0 0 9px rgba(130,255,180,.6); }
 .remote-meta span { min-width: 0; color: #60c68b; font: 7px/1.3 var(--osd); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .remote-pair { position: absolute; inset: 0; pointer-events: none; }
 .remote-pair > div { position: static; display: block; text-align: center; }
-.remote-pair button { position: absolute; width: 14%; height: 4.4%; color: rgba(236,238,229,.82); font-size: 8px; border-radius: 16px; pointer-events: auto; transform: translate(-50%, -50%); }
+.remote-pair button { position: absolute; width: 14%; height: 4.4%; color: transparent; font-size: 0; border-radius: 16px; pointer-events: auto; transform: translate(-50%, -50%); }
 .remote-pair > div:first-child button:first-child { left: 21%; top: 25%; }
 .remote-pair > div:first-child button:last-child { left: 21%; top: 30%; }
 .remote-pair > div:last-child button:first-child { left: 79%; top: 25%; }
 .remote-pair > div:last-child button:last-child { left: 77%; top: 30%; }
-.remote-pair span { position: absolute; color: rgba(210,211,202,.72); font: 5px/1 var(--mono); letter-spacing: .08em; text-shadow: 0 1px 2px #000; transform: translate(-50%, -50%); }
+.remote-pair span { display: none; }
 .remote-pair > div:first-child span { left: 21%; top: 27.5%; }
 .remote-pair > div:last-child span { left: 78%; top: 27.5%; }
 .remote-wide { position: absolute; left: 50%; top: 31%; width: 15%; height: 4.2%; display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 50%; color: rgba(214,216,205,.82); font: 0/1 var(--mono); letter-spacing: .08em; transform: translate(-50%, -50%); }
 .remote-wide svg { width: 12px; height: 12px; }
+.remote-wide svg { display: none; }
 .remote-wide:hover { color: #fff; }
 .remote-dpad { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; }
 .remote-dpad button { position: absolute; display: grid; place-items: center; width: 18%; height: 5.8%; color: rgba(235,231,204,.86); border-radius: 50%; pointer-events: auto; transform: translate(-50%, -50%); }
 .remote-dpad button svg { width: 17px; height: 17px; }
+.remote-dpad button svg { display: none; }
 .remote-dpad button:hover { color: #fff; }
 .remote-dpad .up { left: 50%; top: 37%; }
 .remote-dpad .down { left: 50%; top: 49%; }
 .remote-dpad .left { left: 24%; top: 43%; }
 .remote-dpad .right { left: 75%; top: 43%; }
-.remote-dpad .ok { left: 49%; top: 43%; width: 17%; height: 5.8%; color: #eceef4; font: 6px/1 var(--mono); letter-spacing: .04em; }
+.remote-dpad .ok { left: 49%; top: 43%; width: 17%; height: 5.8%; color: transparent; font: 0/1 var(--mono); letter-spacing: .04em; }
 .remote-dpad .ok:hover { color: #fff; }
 .number-pad { position: absolute; inset: 0; display: block; pointer-events: none; }
 .number-pad button { position: absolute; width: 16%; height: 4.7%; display: grid; place-items: center; border-radius: 50%; color: rgba(237,239,230,.9); font: 8px/1 var(--mono); text-shadow: 0 1px 2px #000; pointer-events: auto; transform: translate(-50%, -50%); }
@@ -705,6 +708,7 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .number-pad button:nth-child(11) { left: 51%; top: 71%; }
 .number-pad button:nth-child(12) { left: 77%; top: 71%; }
 .number-pad button svg { width: 13px; height: 13px; }
+.number-pad button svg { display: none; }
 .number-pad button:hover { color: #fff; }
 .macro-row { position: absolute; inset: 0; display: block; pointer-events: none; }
 .macro-row button { position: absolute; width: 14%; height: 4.3%; min-width: 0; display: grid; place-items: end center; color: rgba(245,246,238,.92); font: 4.5px/1 var(--mono); letter-spacing: 0; overflow: hidden; text-shadow: 0 1px 2px #000; border-radius: 50%; pointer-events: auto; transform: translate(-50%, -50%); }
@@ -713,24 +717,28 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; width: 15px; heigh
 .macro-row button:nth-child(3) { left: 60%; top: 76%; }
 .macro-row button:nth-child(4) { left: 80%; top: 77%; }
 .macro-row button span { display: none; }
+.macro-row button { color: transparent; font-size: 0; text-shadow: none; }
+.macro-dot { display: none; }
 .macro-dot { width: 28px; height: 10px; border-radius: 5px; background: #888; box-shadow: inset 0 1.5px rgba(255,255,255,.5), inset 0 -2px 2px rgba(0,0,0,.28), 0 1px 3px rgba(0,0,0,.5); }
 .macro-dot.macro-red { background: linear-gradient(#f0685e, #d1443b); }
 .macro-dot.macro-green { background: linear-gradient(#63c76c, #3f9b48); }
 .macro-dot.macro-yellow { background: linear-gradient(#f0c94b, #d1a52f); }
 .macro-dot.macro-blue { background: linear-gradient(#5c9df0, #3f79cf); }
 .remote-jog { position: absolute; inset: 0; display: block; pointer-events: none; }
-.remote-jog button { position: absolute; width: 18%; height: 4%; display: flex; align-items: center; justify-content: center; gap: 1px; border-radius: 8px; color: rgba(230,232,224,.9); font: 5.5px/1 var(--mono); text-shadow: 0 1px 2px #000; pointer-events: auto; transform: translate(-50%, -50%); }
+.remote-jog button { position: absolute; width: 18%; height: 4%; display: flex; align-items: center; justify-content: center; gap: 1px; border-radius: 8px; color: transparent; font: 0/1 var(--mono); text-shadow: none; pointer-events: auto; transform: translate(-50%, -50%); }
 .remote-jog button:nth-child(1) { left: 21%; top: 81%; }
 .remote-jog button:nth-child(2) { left: 51%; top: 81%; }
 .remote-jog button:nth-child(3) { left: 78%; top: 81%; }
+.remote-jog button svg { display: none; }
 .remote-jog button:hover { color: #e7e8ee; }
 .remote-jog button.active { color: var(--accent); }
 .remote-transport { position: absolute; inset: 0; display: block; pointer-events: none; }
-.remote-transport button { position: absolute; width: 18%; height: 4%; display: grid; place-items: center; border-radius: 8px; color: rgba(230,232,224,.9); pointer-events: auto; transform: translate(-50%, -50%); }
+.remote-transport button { position: absolute; width: 18%; height: 4%; display: grid; place-items: center; border-radius: 8px; color: transparent; pointer-events: auto; transform: translate(-50%, -50%); }
 .remote-transport button:nth-child(1) { left: 23%; top: 86%; }
 .remote-transport button:nth-child(2) { left: 51%; top: 86%; }
 .remote-transport button:nth-child(3) { left: 80%; top: 86%; }
 .remote-transport button svg { width: 13px; height: 13px; }
+.remote-transport button svg { display: none; }
 .remote-transport button:hover { color: #d6d7dd; }
 
 /* Timeline: off by default (a TV has no scrubber), toggled from the transport. */
